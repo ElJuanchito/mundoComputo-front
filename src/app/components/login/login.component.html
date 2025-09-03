@@ -1,0 +1,21 @@
+<div class="login-container">
+	<form [formGroup]="loginForm" (ngSubmit)="login()">
+		<label for="email">Correo electrónico</label>
+		<input id="email" type="email" formControlName="email" />
+		<button type="button" (click)="sendCode()" [disabled]="loading || !loginForm.get('email')?.valid">Enviar código</button>
+
+		<label for="password">Contraseña</label>
+		<input id="password" type="password" formControlName="password" />
+
+		<label for="code">Código</label>
+		<input id="code" type="text" formControlName="code" />
+
+		<button type="submit" [disabled]="loading || loginForm.invalid">Ingresar</button>
+	</form>
+		@if (errorMsg) {
+			<div class="error">{{ errorMsg }}</div>
+		}
+		@if (codeSent) {
+			<div class="success">Código enviado al correo.</div>
+		}
+</div>

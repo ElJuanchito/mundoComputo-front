@@ -1,0 +1,1175 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v1
+servers:
+- url: http://mundocomputo.juanchito.me
+  description: Generated server url
+paths:
+  /api/inventario/productos:
+    get:
+      tags:
+      - inventario
+      summary: Obtener todos los productos
+      description: Obtiene una lista de todos los productos en el inventario
+      operationId: getAllProductos
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListProductoInfoDTO"
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - inventario
+      summary: Actualizar producto
+      description: Actualiza la información de un producto existente
+      operationId: updateProducto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateProductoDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - inventario
+      summary: Crear producto
+      description: Crea un nuevo producto en el inventario
+      operationId: createProducto
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductoDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/inventario/categorias:
+    get:
+      tags:
+      - inventario
+      summary: Obtener todas las categorías
+      description: Obtiene una lista de todas las categorías de productos
+      operationId: getAllCategorias
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListCategoriaInfoDTO"
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - inventario
+      summary: Actualizar categoría
+      description: Actualiza la información de una categoría existente
+      operationId: updateCategoria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateCategoriaDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - inventario
+      summary: Crear categoría
+      description: Crea una nueva categoría de productos
+      operationId: createCategoria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCategoriaDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/clientes:
+    get:
+      tags:
+      - clientes
+      summary: Obtener todos los clientes
+      description: Obtiene una lista de todos los clientes en la plataforma
+      operationId: getAllClientes
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListClienteInfoDTO"
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - clientes
+      summary: Actualizar cliente
+      description: Actualiza la informacion de un cliente existente
+      operationId: updateCliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateClienteDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - clientes
+      summary: Crear cliente
+      description: Crea un nuevo cliente en la plataforma
+      operationId: createCliente
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateClienteDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/clientes/desactivar/{id}:
+    put:
+      tags:
+      - clientes
+      summary: Desactivar cliente
+      description: Desactiva la cuenta de un cliente
+      operationId: desactivarCliente
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/admin/usuarios:
+    get:
+      tags:
+      - admin
+      summary: Obtener todos los usuarios
+      description: Obtiene la lista de todos los usuarios registrados
+      operationId: getAllUsuarios
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListUsuarioInfoDTO"
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - admin
+      summary: Actualizar usuario
+      description: Actualiza la información de un usuario existente
+      operationId: updateUsuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUsuarioDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - admin
+      summary: Crear usuario
+      description: Crea un nuevo usuario en el sistema
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUsuarioDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/inventario/productos/salida:
+    post:
+      tags:
+      - inventario
+      summary: Registrar salida de inventario
+      description: Registra una salida de inventario para un producto
+      operationId: recordOutput
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventarioDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/inventario/productos/entrada:
+    post:
+      tags:
+      - inventario
+      summary: Registrar entrada de inventario
+      description: Registra una entrada de inventario para un producto
+      operationId: recordInput
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventarioDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/inventario/productos/ajuste:
+    post:
+      tags:
+      - inventario
+      summary: Registrar ajuste de inventario
+      description: Registra un ajuste de inventario para un producto
+      operationId: recordAdjust
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InventarioDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/auth/send-verification-code:
+    post:
+      tags:
+      - auth
+      summary: Enviar código de verificación
+      description: Envía un código de verificación al correo electrónico del usuario
+      operationId: sendVerificationCode
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+  /api/auth/login:
+    post:
+      tags:
+      - auth
+      summary: Iniciar sesión
+      description: Inicia sesión en la plataforma
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOTokenDTO"
+  /api/auth/change-password:
+    post:
+      tags:
+      - auth
+      summary: Cambiar contraseña
+      description: Cambia la contraseña de un usuario usando el código de verificación
+      operationId: changePassword
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangePasswordDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+  /api/inventario/productos/{id}:
+    get:
+      tags:
+      - inventario
+      summary: Obtener producto por ID
+      description: Obtiene la información de un producto por su identificador
+      operationId: getProductoInfoById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOProductoInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/inventario/productos/{id}/historico:
+    get:
+      tags:
+      - inventario
+      summary: Obtener histórico de inventario
+      description: Obtiene el histórico de movimientos de inventario de un producto
+      operationId: getHistorico
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListHistoricoInventarioDTO"
+      security:
+      - bearerAuth: []
+  /api/inventario/productos/byCategoria:
+    get:
+      tags:
+      - inventario
+      summary: Obtener productos por categoría
+      description: Obtiene productos filtrados por categoría
+      operationId: getProductosByCategoria
+      parameters:
+      - name: categoriaId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListProductoInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/inventario/categorias/{id}:
+    get:
+      tags:
+      - inventario
+      summary: Obtener categoría por ID
+      description: Obtiene la información de una categoría por su identificador
+      operationId: getCategoriaInfoById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOCategoriaInfoDTO"
+      security:
+      - bearerAuth: []
+    delete:
+      tags:
+      - inventario
+      summary: Eliminar categoría
+      description: Elimina una categoría de productos
+      operationId: deleteCategoria
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/inventario/categorias/byName:
+    get:
+      tags:
+      - inventario
+      summary: Obtener categorías por nombre
+      description: Obtiene categorías filtradas por nombre
+      operationId: getCategoriasByName
+      parameters:
+      - name: nombre
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListCategoriaInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/clientes/{id}:
+    get:
+      tags:
+      - clientes
+      summary: Obtener informacion del cliente
+      description: Obtiene la informacion de un cliente por su ID
+      operationId: getClienteInfoById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOClienteInfoDTO"
+      security:
+      - bearerAuth: []
+    delete:
+      tags:
+      - clientes
+      summary: Eliminar cliente
+      description: Elimina un cliente existente de la plataforma
+      operationId: deleteCliente
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/clientes/byEstado:
+    get:
+      tags:
+      - clientes
+      summary: Obtener clientes por estado
+      description: Obtiene una lista de clientes filtrados por su estado
+      operationId: getClientesByEstado
+      parameters:
+      - name: estado
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACTIVO
+          - INACTIVO
+          - ELIMINADO
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListClienteInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/admin/usuarios/{id}:
+    get:
+      tags:
+      - admin
+      summary: Obtener usuario por ID
+      description: Obtiene la información de un usuario por su identificador
+      operationId: getUsuarioById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOUsuarioInfoDTO"
+      security:
+      - bearerAuth: []
+    delete:
+      tags:
+      - admin
+      summary: Eliminar usuario
+      description: Elimina un usuario por su identificador
+      operationId: deleteUsuario
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOString"
+      security:
+      - bearerAuth: []
+  /api/admin/usuarios/byRol:
+    get:
+      tags:
+      - admin
+      summary: Obtener usuarios por rol
+      description: Obtiene los usuarios filtrados por rol
+      operationId: getUsuariosByRol
+      parameters:
+      - name: rol
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - ADMIN
+          - VENDEDOR
+          - TECNICO
+          - INVENTARIO
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListUsuarioInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/admin/usuarios/byNombre:
+    get:
+      tags:
+      - admin
+      summary: Obtener usuarios por nombre
+      description: Obtiene los usuarios cuyo nombre contiene el parámetro proporcionado
+      operationId: getUsuariosByNombre
+      parameters:
+      - name: nombre
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListUsuarioInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/admin/usuarios/byEstado:
+    get:
+      tags:
+      - admin
+      summary: Obtener usuarios por estado
+      description: Obtiene los usuarios filtrados por estado
+      operationId: getUsuariosByEstado
+      parameters:
+      - name: estado
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - ACTIVO
+          - INACTIVO
+          - ELIMINADO
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListUsuarioInfoDTO"
+      security:
+      - bearerAuth: []
+  /api/admin/roles:
+    get:
+      tags:
+      - admin
+      summary: Obtener roles
+      description: Obtiene la lista de roles disponibles
+      operationId: getRoles
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/MessageDTOListRol"
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    UpdateProductoDTO:
+      required:
+      - categoriaId
+      - descripcion
+      - id
+      - nombre
+      - precio
+      - stockMinimo
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          minimum: 0
+          type: number
+          format: double
+        stockMinimo:
+          minimum: 0
+          type: integer
+          format: int32
+        categoriaId:
+          type: integer
+          format: int64
+    MessageDTOString:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: string
+    UpdateCategoriaDTO:
+      required:
+      - descripcion
+      - id
+      - nombre
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        descripcion:
+          type: string
+    UpdateClienteDTO:
+      required:
+      - apellido
+      - id
+      - nombre
+      - telefono
+      type: object
+      properties:
+        nombre:
+          maxLength: 50
+          minLength: 2
+          type: string
+        apellido:
+          maxLength: 50
+          minLength: 2
+          type: string
+        telefono:
+          maxLength: 10
+          minLength: 10
+          type: string
+        id:
+          type: integer
+          format: int64
+    UpdateUsuarioDTO:
+      required:
+      - apellido
+      - id
+      - nombre
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        apellido:
+          type: string
+    CreateProductoDTO:
+      required:
+      - categoriaId
+      - descripcion
+      - nombre
+      - precio
+      - stock
+      - stockMinimo
+      type: object
+      properties:
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          minimum: 0
+          type: number
+          format: double
+        stock:
+          minimum: 0
+          type: integer
+          format: int32
+        stockMinimo:
+          minimum: 0
+          type: integer
+          format: int32
+        categoriaId:
+          type: integer
+          format: int64
+    InventarioDTO:
+      required:
+      - cantidad
+      - descripcion
+      - productoId
+      - usuarioId
+      type: object
+      properties:
+        productoId:
+          type: integer
+          format: int64
+        usuarioId:
+          type: integer
+          format: int64
+        cantidad:
+          minimum: 0
+          type: integer
+          format: int32
+        descripcion:
+          type: string
+    CreateCategoriaDTO:
+      required:
+      - descripcion
+      - nombre
+      type: object
+      properties:
+        nombre:
+          type: string
+        descripcion:
+          type: string
+    CreateClienteDTO:
+      required:
+      - apellido
+      - email
+      - nombre
+      - telefono
+      type: object
+      properties:
+        nombre:
+          maxLength: 50
+          minLength: 2
+          type: string
+        apellido:
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          type: string
+        telefono:
+          maxLength: 10
+          minLength: 10
+          type: string
+    LoginDTO:
+      required:
+      - code
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        code:
+          type: string
+    MessageDTOTokenDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          $ref: "#/components/schemas/TokenDTO"
+    TokenDTO:
+      type: object
+      properties:
+        token:
+          type: string
+    ChangePasswordDTO:
+      required:
+      - code
+      - email
+      - newPassword
+      type: object
+      properties:
+        email:
+          type: string
+        newPassword:
+          type: string
+        code:
+          type: string
+    CreateUsuarioDTO:
+      required:
+      - apellido
+      - email
+      - nombre
+      - rol
+      type: object
+      properties:
+        nombre:
+          type: string
+        apellido:
+          type: string
+        email:
+          type: string
+        contrasena:
+          type: string
+        rol:
+          type: string
+          enum:
+          - ADMIN
+          - VENDEDOR
+          - TECNICO
+          - INVENTARIO
+    MessageDTOListProductoInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductoInfoDTO"
+    ProductoInfoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        descripcion:
+          type: string
+        precio:
+          type: number
+          format: double
+        stock:
+          type: integer
+          format: int32
+        stockMinimo:
+          type: integer
+          format: int32
+        categoriaId:
+          type: integer
+          format: int64
+    MessageDTOProductoInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          $ref: "#/components/schemas/ProductoInfoDTO"
+    HistoricoInventarioDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombreProducto:
+          type: string
+        productoId:
+          type: integer
+          format: int64
+        fecha:
+          type: string
+          format: date-time
+        cantidadAnterior:
+          type: integer
+          format: int32
+        cantidadNueva:
+          type: integer
+          format: int32
+        tipoMovimiento:
+          type: string
+          enum:
+          - ENTRADA
+          - SALIDA
+          - AJUSTE
+        nombreUsuario:
+          type: string
+        usuarioId:
+          type: integer
+          format: int64
+        comentario:
+          type: string
+    MessageDTOListHistoricoInventarioDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: array
+          items:
+            $ref: "#/components/schemas/HistoricoInventarioDTO"
+    CategoriaInfoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          type: string
+        descripcion:
+          type: string
+    MessageDTOListCategoriaInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: array
+          items:
+            $ref: "#/components/schemas/CategoriaInfoDTO"
+    MessageDTOCategoriaInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          $ref: "#/components/schemas/CategoriaInfoDTO"
+    ClienteInfoDTO:
+      required:
+      - apellido
+      - email
+      - nombre
+      - telefono
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        nombre:
+          maxLength: 50
+          minLength: 2
+          type: string
+        apellido:
+          maxLength: 50
+          minLength: 2
+          type: string
+        email:
+          type: string
+        telefono:
+          maxLength: 10
+          minLength: 10
+          type: string
+        estado:
+          type: string
+          enum:
+          - ACTIVO
+          - INACTIVO
+          - ELIMINADO
+    MessageDTOListClienteInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: array
+          items:
+            $ref: "#/components/schemas/ClienteInfoDTO"
+    MessageDTOClienteInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          $ref: "#/components/schemas/ClienteInfoDTO"
+    MessageDTOListUsuarioInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: array
+          items:
+            $ref: "#/components/schemas/UsuarioInfoDTO"
+    UsuarioInfoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        nombre:
+          type: string
+        apellido:
+          type: string
+        rol:
+          type: string
+          enum:
+          - ADMIN
+          - VENDEDOR
+          - TECNICO
+          - INVENTARIO
+        estado:
+          type: string
+          enum:
+          - ACTIVO
+          - INACTIVO
+          - ELIMINADO
+    MessageDTOUsuarioInfoDTO:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          $ref: "#/components/schemas/UsuarioInfoDTO"
+    MessageDTOListRol:
+      type: object
+      properties:
+        error:
+          type: boolean
+        message:
+          type: array
+          items:
+            type: string
+            enum:
+            - ADMIN
+            - VENDEDOR
+            - TECNICO
+            - INVENTARIO
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

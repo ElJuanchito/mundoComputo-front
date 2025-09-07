@@ -23,28 +23,28 @@ export class AdminService {
 
   // Obtener usuario por ID
   getUsuarioById(id: number): Observable<MessageDTO> {
-    return this.http.get<MessageDTO>(`${ADMIN_URL}/${id}`);
+    return this.http.get<MessageDTO>(`${ADMIN_URL}/usuarios/${id}`);
   }
 
   // Crear usuario
   createUsuario(data: CreateUsuarioDTO): Observable<MessageDTO> {
-    return this.http.post<MessageDTO>(`${ADMIN_URL}`, data);
+    return this.http.post<MessageDTO>(`${ADMIN_URL}/usuarios  `, data);
   }
 
   // Actualizar usuario
   updateUsuario(data: UpdateUsuarioDTO): Observable<MessageDTO> {
-    return this.http.put<MessageDTO>(`${ADMIN_URL}`, data);
+    return this.http.put<MessageDTO>(`${ADMIN_URL}/usuarios`, data);
   }
 
   // Eliminar usuario
   deleteUsuario(id: number): Observable<MessageDTO> {
-    return this.http.delete<MessageDTO>(`${ADMIN_URL}/${id}`);
+    return this.http.delete<MessageDTO>(`${ADMIN_URL}/usuarios/${id}`);
   }
 
   // Obtener usuarios por rol
   getUsuariosByRol(rol: string): Observable<MessageDTO> {
     const params = new HttpParams().set('rol', rol);
-    return this.http.get<MessageDTO>(`${ADMIN_URL}/byRol`, {
+    return this.http.get<MessageDTO>(`${ADMIN_URL}/usuarios/byRol`, {
       params
     });
   }
@@ -52,7 +52,7 @@ export class AdminService {
   // Obtener usuarios por nombre
   getUsuariosByNombre(nombre: string): Observable<MessageDTO> {
     const params = new HttpParams().set('nombre', nombre);
-    return this.http.get<MessageDTO>(`${ADMIN_URL}/byNombre`, {
+    return this.http.get<MessageDTO>(`${ADMIN_URL}/usuarios/byNombre`, {
       params
     });
   }
@@ -60,7 +60,7 @@ export class AdminService {
   // Obtener usuarios por estado
   getUsuariosByEstado(estado: string): Observable<MessageDTO> {
     const params = new HttpParams().set('estado', estado);
-    return this.http.get<MessageDTO>(`${ADMIN_URL}/byEstado`, {
+    return this.http.get<MessageDTO>(`${ADMIN_URL}/usuarios/byEstado`, {
       params
     });
   }

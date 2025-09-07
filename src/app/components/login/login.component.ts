@@ -21,6 +21,7 @@ export class LoginComponent {
   loading = false;
   codeSent = false;
   errorMsg = '';
+  step = 1;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private tokenService: TokenService) {
     this.loginForm = this.fb.group({

@@ -49,6 +49,12 @@ export class GestionInventarioComponent {
         }
     }
 
+    abrirRegistroMovimiento() {
+        if (this.selectedProducto) {
+            this.router.navigate(['/inventario/registro-movimiento', this.selectedProducto.id]);
+        }
+    }
+
     getNombreCategoria(categoriaId: number): string {
     this.inventarioService.getAllCategorias().subscribe({
         next: data => {

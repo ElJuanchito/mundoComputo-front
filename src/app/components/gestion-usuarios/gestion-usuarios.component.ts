@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AdminService } from '../../services/admin.service';
 import { UsuarioInfoDTO } from '../../dtos/usuario/usuario-info-dto';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-usuarios',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './gestion-usuarios.component.html',
   styleUrls: ['./gestion-usuarios.component.css']
 })

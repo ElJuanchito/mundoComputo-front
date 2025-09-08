@@ -42,4 +42,34 @@ export class GestionUsuariosComponent {
     console.log(this.selectedUsuario);
   }
 
+  deleteUsuario() {
+    if (this.selectedUsuario) {
+      this.adminService.deleteUsuario(this.selectedUsuario.id).subscribe({
+        next: data => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: data.message,
+            footer: 'Usuario eliminado correctamente'
+          });
+          this.usuarios = this.usuarios.filter(u => u.id !== this.selectedUsuario?.id);
+          this.selectedUsuario = null;
+        },
+        error: error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: error.error.message,
+            footer: 'No se pudo eliminar el usuario'
+          });
+        },
+      });
+    }
+  }
+
+  goToUpdateUsuario() {
+    if (this.selectedUsuario) {
+      this.router.navigate(['/admin/actualizar-usuario', this.selectedUsuario.id]);
+    }
+  }
 }

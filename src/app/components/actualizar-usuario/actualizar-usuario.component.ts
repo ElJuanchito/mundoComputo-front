@@ -1,0 +1,5 @@
+import { Component, type OnInit, type OnChanges, Input, Output, EventEmitter } from "@angular/core"
+import { type FormBuilder, type FormGroup, Validators } from "@angular/forms"
+import type { AdminService } from "../../services/admin.service"
+import type { UpdateUsuarioDTO } from "../../dtos/usuario/update-usuario-dto"
+import type { UsuarioInfoDTO } from "../../dtos/usuario/usuario-info-dto"

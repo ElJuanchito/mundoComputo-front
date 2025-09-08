@@ -16,8 +16,8 @@ import { Router } from '@angular/router';
   templateUrl: './crear-usuario.component.html',
   styleUrl: './crear-usuario.component.css'
 })
-export class CrearUsuarioComponent {
 
+export class CrearUsuarioComponent {
   userForm: FormGroup;
   roles: [];
 
@@ -48,13 +48,10 @@ export class CrearUsuarioComponent {
     });
   }
 
-
-
   createUsuario() {
     if (this.userForm.invalid) return;
 
     const createUsuarioDTO = this.userForm.value as CreateUsuarioDTO;
-
     console.log(createUsuarioDTO);
 
     this.adminService.createUsuario(createUsuarioDTO).subscribe({

@@ -1,0 +1,21 @@
+<bod class="body-container">
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-content">
+                <h2 class="modal-title">Editar categoria</h2>
+                <form class="form" [formGroup]="categoryForm" (ngSubmit)="updateCategoria()">
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion" class="form-input" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-cancel">Cancelar</button>
+                        <button type="submit" class="btn btn-submit">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

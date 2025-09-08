@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { InventarioService } from '../../services/inventario.service';
 import { ProductoInfoDTO } from '../../dtos/producto/producto-info-dto';
 import Swal from 'sweetalert2';
@@ -7,7 +7,7 @@ import { CategoriaInfoDTO } from '../../dtos/categoria/categoria-info-dto';
 
 @Component({
   selector: 'app-gestion-inventario',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './gestion-inventario.component.html',
   styleUrls: ['./gestion-inventario.component.css']
 })

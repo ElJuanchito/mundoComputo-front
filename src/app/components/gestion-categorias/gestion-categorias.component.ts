@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { InventarioService } from '../../services/inventario.service';
 import { CategoriaInfoDTO } from '../../dtos/categoria/categoria-info-dto';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-categorias',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './gestion-categorias.component.html',
   styleUrls: ['./gestion-categorias.component.css']
 })

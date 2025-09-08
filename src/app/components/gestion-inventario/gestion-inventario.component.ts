@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { InventarioService } from '../../services/inventario.service';
 import { ProductoInfoDTO } from '../../dtos/producto/producto-info-dto';
 import Swal from 'sweetalert2';
+import { CategoriaInfoDTO } from '../../dtos/categoria/categoria-info-dto';
 
 @Component({
   selector: 'app-gestion-inventario',
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class GestionInventarioComponent {
     inventario: ProductoInfoDTO[] = [];
+    categorias: CategoriaInfoDTO[] = [];
     selectedProducto: ProductoInfoDTO | null = null;
 
     constructor(private inventarioService: InventarioService, private router: Router) {
@@ -45,5 +47,24 @@ export class GestionInventarioComponent {
         if (this.selectedProducto) {
             this.router.navigate(['/admin/editar-producto', this.selectedProducto.id]);
         }
+    }
+
+    getNombreCategoria(categoriaId: number): string {
+    this.inventarioService.getAllCategorias().subscribe({
+        next: data => {
+            this.categorias = data.message;
+        },
+        error: error => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: error.error.message,
+                footer: 'No se pudo obtener la lista de categorias'
+            });
+        },
+    });
+    const categoria = this.categorias.find(c => c.id === categoriaId);
+    return categoria ? categoria.nombre : 'Desconocida';
+
     }
 }

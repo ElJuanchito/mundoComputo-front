@@ -1,6 +1,0 @@
-import { Component, type OnInit, type OnChanges, Input, Output, EventEmitter } from "@angular/core"
-import { type FormBuilder, type FormGroup, Validators } from "@angular/forms"
-import type { InventarioService } from "../../services/inventario.service"
-import type { UpdateProductoDTO } from "../../dtos/producto/update-producto-dto"
-import type { ProductoInfoDTO } from "../../dtos/producto/producto-info-dto"
-import type { CategoriaInfoDTO } from "../../dtos/categoria/categoria-info-dto"

@@ -67,7 +67,7 @@ export class GestionUsuariosComponent {
     }
   }
 
-  updateUsuario() {
+  goToUpdateUsuario() {
     if (this.selectedUsuario) {
       this.router.navigate(['/admin/actualizar-usuario', this.selectedUsuario.id]);
     }

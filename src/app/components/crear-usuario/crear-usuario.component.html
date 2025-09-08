@@ -2,31 +2,47 @@
     <div class="modal-overlay">
         <div class="modal-container">
             <div class="modal-content">
+                @if (updateOnly) {
+                <h2 class="modal-title">Actualizar usuario</h2>
+                }
+                @if (!updateOnly) {
                 <h2 class="modal-title">Crear usuario</h2>
+                }
                 <form class="user-form" [formGroup]="userForm" (ngSubmit)="createUsuario()">
                     <div class="form-group">
                         <input type="text" class="form-input" placeholder="Nombre" required formControlName="nombre">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Apellido" required formControlName="apellido">
+                        <input type="text" class="form-input" placeholder="Apellido" required
+                            formControlName="apellido">
                     </div>
+                    @if (!updateOnly) {
                     <div class="form-group">
                         <input type="email" class="form-input" placeholder="Correo" required formControlName="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" placeholder="Contraseña" required formControlName="contrasena">
+                        <input type="password" class="form-input" placeholder="Contraseña" required
+                            formControlName="contrasena">
                     </div>
                     <div class="form-group">
                         <select class="form-select" required formControlName="rol">
                             <option value="" disabled selected>Seleccione el rol</option>
                             @for (item of roles; track $index) {
-                                <option value={{item}}>{{ item }}</option>
+                            <option value={{item}}>{{ item }}</option>
                             }
                         </select>
                     </div>
+                    }
                     <div class="button-group">
-                        <button class="btn btn-cancel" type="button">Cancelar</button>
-                        <button class="btn btn-submit" type="submit">Crear</button>
+                        <button class="btn btn-cancel" type="button" (click)="goToGestionUsuarios()">Cancelar</button>
+                        <button class="btn btn-submit" type="submit">
+                            @if (updateOnly) {
+                            Actualizar
+                            }
+                            @if (!updateOnly) {
+                            Crear
+                            }
+                        </button>
                     </div>
                 </form>
             </div>

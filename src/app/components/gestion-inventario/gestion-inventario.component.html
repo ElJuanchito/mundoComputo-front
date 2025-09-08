@@ -41,12 +41,13 @@
             <table class="inventory-table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>NOMBRE</th>
                         <th>DESCRIPCION</th>
                         <th>PRECIO</th>
                         <th>STOCK</th>
                         <th>STOCK MINIMO</th>
-                        <th>CATEGORIAID</th>
+                        <th>CATEGORIA</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -71,7 +72,7 @@
                             <p>{{item.stockMinimo}}</p>
                         </td>
                         <td>
-                            <p>{{item.categoriaId}}</p>
+                            <p>{{getNombreCategoria(item.categoriaId)}}</p>
                         </td>
                     </tr>
                 }

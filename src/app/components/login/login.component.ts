@@ -9,6 +9,7 @@ import { LoginDTO } from '../../dtos/auth/login-dto';
 import { TokenDTO } from '../../dtos/auth/token-dto';
 
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,7 @@ export class LoginComponent {
   errorMsg = '';
   step = 1;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private tokenService: TokenService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private tokenService: TokenService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -72,6 +73,8 @@ export class LoginComponent {
           title: 'Éxito',
           text: 'Inicio de sesión exitoso.'
         });
+
+        this.router.navigate(['/admin/gestion-usuarios']);
       },
       error: (error) => {
         Swal.fire({

@@ -6,6 +6,7 @@ import { GestionInventarioComponent } from "./components/gestion-inventario/gest
 import { GestionCategoriasComponent } from "./components/gestion-categorias/gestion-categorias.component"
 import { CrearCategoriaComponent } from "./components/crear-categoria/crear-categoria.component"
 import { CrearProductoComponent } from "./components/crear-producto/crear-producto.component"
+import { RegistroMovimiento } from "./components/registro-movimiento/registro-movimiento"
 
 export const routes: Routes = [
   { path: "", redirectTo: "/auth/login", pathMatch: "full" },
@@ -19,5 +20,6 @@ export const routes: Routes = [
   { path: "inventario/gestion-inventario", component: GestionInventarioComponent },
   { path: "inventario/crear-producto", component: CrearProductoComponent },
   { path: "inventario/actualizar-producto/:id", component: CrearProductoComponent },
+  { path: "inventario/registro-movimiento/:id", component: RegistroMovimiento },
   { path: "**", redirectTo: "/auth/login" },
 ]

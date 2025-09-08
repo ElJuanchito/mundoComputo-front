@@ -47,6 +47,9 @@
                     </svg>
                     Editar
                 </button>
+                <button class="btn btn-warning ms-2" [disabled]="!selectedProducto" (click)="abrirRegistroMovimiento()">
+                    <i class="fa-solid fa-right-left me-2"></i>Registrar movimiento
+                </button>
             </div>
         </div>
 

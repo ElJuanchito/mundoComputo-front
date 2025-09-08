@@ -1,0 +1,30 @@
+<div class="container mt-4">
+	<h2>Registrar movimiento de inventario</h2>
+	<form [formGroup]="movimientoForm" (ngSubmit)="registrarMovimiento()">
+		<div class="mb-3">
+			<label for="productoId" class="form-label">ID Producto</label>
+			<input id="productoId" class="form-control" formControlName="productoId" />
+		</div>
+		<div class="mb-3">
+			<label for="usuarioId" class="form-label">ID Usuario</label>
+			<input id="usuarioId" class="form-control" formControlName="usuarioId" type="number" />
+		</div>
+		<div class="mb-3">
+			<label for="cantidad" class="form-label">Cantidad</label>
+			<input id="cantidad" class="form-control" formControlName="cantidad" type="number" min="1" />
+		</div>
+		<div class="mb-3">
+			<label for="descripcion" class="form-label">Descripción</label>
+			<input id="descripcion" class="form-control" formControlName="descripcion" />
+		</div>
+        <div class="mb-3">
+			<label for="tipo" class="form-label">Tipo</label>
+			<select id="tipo" class="form-select" formControlName="tipo">
+                @for (item of tipos; track $index) {
+                    <option>{{ item }}</option>
+                }
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary" [disabled]="movimientoForm.invalid">Registrar</button>
+	</form>
+</div>

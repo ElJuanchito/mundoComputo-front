@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { TokenService } from '../../services/token.service';
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginDTO } from '../../dtos/auth/login-dto';
 import { TokenDTO } from '../../dtos/auth/token-dto';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -26,6 +26,7 @@ export class LoginComponent {
   countdown: number = 0;
   countdownDisplay: string = '';
   countdownInterval: any = null;
+  imagen = 'https://ywxctrqpfxgdwfcfccbj.supabase.co/storage/v1/object/public/mundoComputo-bucket/logo.png';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private tokenService: TokenService, private router: Router) {
     this.loginForm = this.fb.group({

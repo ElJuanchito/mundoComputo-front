@@ -23,6 +23,9 @@ export class LoginComponent {
   codeSent = false;
   errorMsg = '';
   step = 1;
+  countdown: number = 0;
+  countdownDisplay: string = '';
+  countdownInterval: any = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private tokenService: TokenService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -44,6 +47,7 @@ export class LoginComponent {
         this.codeSent = true;
         this.errorMsg = '';
         this.loading = false;
+        this.startCountdown(15 * 60); // 15 minutos en segundos
       },
       error: (error) => {
         Swal.fire({
@@ -54,6 +58,34 @@ export class LoginComponent {
         this.loading = false;
       }
     });
+  }
+
+  startCountdown(seconds: number) {
+    this.countdown = seconds;
+    this.updateCountdownDisplay();
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
+    this.countdownInterval = setInterval(() => {
+      this.countdown--;
+      this.updateCountdownDisplay();
+      if (this.countdown <= 0) {
+        clearInterval(this.countdownInterval);
+        this.countdownDisplay = 'El código ha expirado.';
+      }
+    }, 1000);
+  }
+
+  updateCountdownDisplay() {
+    const min = Math.floor(this.countdown / 60);
+    const sec = this.countdown % 60;
+    this.countdownDisplay = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+  }
+
+  ngOnDestroy() {
+    if (this.countdownInterval) {
+      clearInterval(this.countdownInterval);
+    }
   }
 
   login() {

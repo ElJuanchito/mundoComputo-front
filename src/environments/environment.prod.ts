@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://mundocomputo.juanchito.me/api',
+  apiUrl: 'https://api.mundocomputo.juanchito.me/api',
   featureXEnabled: false,
 };

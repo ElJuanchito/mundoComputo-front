@@ -1,45 +1,51 @@
-<div class="container">
-	<div class="card">
-		<div class="card-body p-4">
-			<h5 class="p-4 text-center mb-0">
-                <i class="fa-solid fa-right-to-bracket me-3"></i>Iniciar Sesion
-            </h5>
-
-			<form class="row g-3" [formGroup]="loginForm" (ngSubmit)="login()">
+<div class="split-container">
+	<div class="split-left">
+		<div class="login-content">
+			<h5 class="modal-title">
+				<i class="fa-solid fa-right-to-bracket me-3"></i>Iniciar Sesión
+			</h5>
+			<form class="user-form row g-3" [formGroup]="loginForm" (ngSubmit)="login()">
+				@if (!codeSent) {
 				<div class="col-12">
-					<div class="input-group">
-						<span class="input-group-text">
-							<i class="fa-solid fa-envelope"></i>
-						</span>
-						<input placeholder="Correo electrónico"  class="form-control" id="email" type="email" formControlName="email" />
-
+					<div class="form-group">
+						<input placeholder="Correo electrónico" class="form-input" id="email" type="email" formControlName="email" />
 					</div>
 				</div>
-				<div class="col-12">
-					<input placeholder="Contraseña" class="form-control border-0 border-bottom" id="password" type="password" formControlName="password" />
+				<div class="form-group">
+					<input placeholder="Contraseña" class="form-input" id="password" type="password" formControlName="password" />
 				</div>
-				<div class="col-12">
-					<input placeholder="Código" class="form-control" id="code" type="text" formControlName="code" />
-				</div>
-
-				<div class="col-12 text-center">
-					<button type="submit" class="btn btn-custom custom-button" [disabled]="loading || loginForm.invalid">
-						<i class="fa-solid fa-plus me-2"></i>Iniciar Sesión
-					</button>
-				</div>
-
 				<div class="col-12 text-center">
 					<button type="button" class="btn btn-custom custom-button" (click)="sendCode()" [disabled]="loading || !loginForm.get('email')?.valid">
 						<i class="fa-solid fa-plus me-2"></i>Enviar código
 					</button>
 				</div>
+				}
+				@else {
+				<div>
+					<p class="text-center">Hemos enviado un código a tu correo electrónico.</p>
+					<p class="text-center">Por favor, ingresa el código a continuación:</p>
+					<div class="form-group">
+						<input placeholder="Código" class="form-input" id="code" type="text" formControlName="code" />
+					</div>
+					<div class="text-center mt-2">
+						<span class="countdown-timer">Código válido por: <b>{{ countdownDisplay }}</b></span>
+					</div>
+					<div class="text-center mt-2">
+						<a href="#" (click)="sendCode()" [class.disabled]="countdown > 0">Reenviar código</a>
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-submit" [disabled]="loading || loginForm.invalid || countdown <= 0">
+							<i class="fa-solid fa-plus me-2"></i>Iniciar Sesión
+						</button>
+					</div>
+				</div>
+				}
 			</form>
 		</div>
 	</div>
-		@if (errorMsg) {
-			<div class="error">{{ errorMsg }}</div>
-		}
-		@if (codeSent) {
-			<div class="success">Código enviado al correo.</div>
-		}
+	<div class="split-right">
+		<div class="banner-box">
+			<img [ngSrc]="imagen" width="600" height="200" alt="Logo de mundo-computo" />
+		</div>
+	</div>
 </div>

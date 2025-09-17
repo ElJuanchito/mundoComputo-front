@@ -5,84 +5,48 @@
                 <h2 class="modal-title">Crear producto</h2>
                 <form class="product-form" [formGroup]="productForm" (ngSubmit)="createProducto()">
                     <div class="form-group">
-                        <input 
-                            type="text" 
-                            id="nombre" 
-                            name="nombre" 
-                            placeholder="Nombre" 
-                            class="form-input"
-                            required formControlName="nombre"
-                        >
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-input"
+                            formControlName="nombre">
                     </div>
-                    
+
                     <div class="form-group">
-                        <input 
-                            type="text" 
-                            id="descripcion" 
-                            name="descripcion" 
-                            placeholder="Descripcion" 
-                            class="form-input"
-                            required formControlName="descripcion"
-                        >
+                        <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion"
+                            class="form-input" formControlName="descripcion">
                     </div>
-                    
+
                     <div class="form-group">
-                        <input 
-                            type="number" 
-                            id="precio" 
-                            name="precio" 
-                            placeholder="Precio" 
-                            class="form-input"
-                            step="0.01"
-                            min="0"
-                            required formControlName="precio"
-                        >
+                        <input type="number" id="precio" name="precio" placeholder="Precio" class="form-input"
+                            formControlName="precio">
                     </div>
-                    
+
                     <div class="form-group">
-                        <input 
-                            type="number" 
-                            id="stock" 
-                            name="stock" 
-                            placeholder="Stock" 
-                            class="form-input"
-                            min="0"
-                            required formControlName="stock"
-                        >
+                        <input type="number" id="stock" name="stock" placeholder="Stock" class="form-input"
+                            formControlName="stock">
                     </div>
-                    
+
                     <div class="form-group">
-                        <input 
-                            type="number" 
-                            id="stockMinimo" 
-                            name="stockMinimo" 
-                            placeholder="Stock minimo" 
-                            class="form-input"
-                            min="0"
-                            required formControlName="stockMinimo"
-                        >
+                        <input type="number" id="stockMinimo" name="stockMinimo" placeholder="Stock minimo"
+                            class="form-input" formControlName="stockMinimo">
                     </div>
-                    
+
                     <div class="form-group">
-                        <input 
-                            type="text" 
-                            id="categoriaId" 
-                            name="categoriaId" 
-                            placeholder="Categoria id" 
-                            class="form-input"
-                            required formControlName="categoriaId"
-                        >
+                        <select class="form-select" formControlName="categoriaId">
+                            <option value="" disabled selected>Seleccione la categoría</option>
+                            @for (item of categorias; track $index) {
+                            <option value={{item.id}}>{{ item.nombre }}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-cancel" (click)="cancel()">
+                            Cancelar
+                        </button>
+                        <button class="btn btn-create" type="submit">
+                            Crear
+                        </button>
                     </div>
                 </form>
-                
-                <div class="modal-actions">
-                    <button type="button" class="btn btn-cancel">
-                        Cancelar
-                    </button>
-                    <button type="submit" form="createProductForm" class="btn btn-create">
-                        Crear
-                    </button>
-                </div>
             </div>
         </div>
     </div>

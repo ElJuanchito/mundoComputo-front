@@ -35,7 +35,7 @@ export class GestionInventarioComponent {
     }
 
     createProducto() {
-        this.router.navigate(['/admin/crear-producto']);
+        this.router.navigate(['/inventario/crear-producto']);
     }
 
     selectProducto(producto: ProductoInfoDTO) {
@@ -45,7 +45,7 @@ export class GestionInventarioComponent {
     
     updateProducto() {
         if (this.selectedProducto) {
-            this.router.navigate(['/admin/editar-producto', this.selectedProducto.id]);
+            this.router.navigate(['/inventario/actualizar-producto', this.selectedProducto.id]);
         }
     }
 

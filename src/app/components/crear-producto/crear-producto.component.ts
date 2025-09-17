@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { CreateProductoDTO } from '../../dtos/producto/create-producto-dto';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { CategoriaInfoDTO } from '../../dtos/categoria/categoria-info-dto';
 
 @Component({
   selector: 'app-crear-producto.component',
@@ -19,6 +20,7 @@ import { Router } from '@angular/router';
 
 export class CrearProductoComponent {   
     productForm: FormGroup;
+    categorias: CategoriaInfoDTO[] = [];
 
     constructor(private fb: FormBuilder, private inventarioService: InventarioService, private router: Router) {
 
@@ -30,10 +32,21 @@ export class CrearProductoComponent {
             stockMinimo: ['', [Validators.required, Validators.min(0)]],
             categoriaId: ['', Validators.required]
         });
+
+        this.getCategorias();
     }
 
     createProducto() {
-        if (this.productForm.invalid) return;
+        console.log("Entro")
+        if (this.productForm.invalid) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, complete todos los campos correctamente.',
+                footer: 'Formulario inválido'
+            });
+            return;
+        }
         
         const createProductoDTO = this.productForm.value as CreateProductoDTO;
         console.log(createProductoDTO);
@@ -57,5 +70,25 @@ export class CrearProductoComponent {
                 });
             },
         });
+    }
+
+    getCategorias(){
+        this.inventarioService.getAllCategorias().subscribe({
+            next: data => {
+                this.categorias = data.message;
+            },
+            error: error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: error.error.message,
+                    footer: 'No se pudo obtener la lista de categorias'
+                });
+            },
+        });
+    }
+
+    cancel() {
+        this.router.navigate(['/inventario/gestion-inventario']);
     }
 }

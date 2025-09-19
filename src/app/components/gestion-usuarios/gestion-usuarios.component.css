@@ -10,6 +10,7 @@
   background-color: #f5f5f5;
   color: #333;
   line-height: 1.6;
+  padding-top: 90px; /* Ajusta este valor según la altura real del header */
 }
 
 .container {

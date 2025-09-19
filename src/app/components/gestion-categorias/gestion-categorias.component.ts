@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-categorias',
-  imports: [RouterLink],
   templateUrl: './gestion-categorias.component.html',
   styleUrls: ['./gestion-categorias.component.css']
 })

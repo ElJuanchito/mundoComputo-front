@@ -7,7 +7,6 @@ import { CategoriaInfoDTO } from '../../dtos/categoria/categoria-info-dto';
 
 @Component({
   selector: 'app-gestion-inventario',
-  imports: [RouterLink],
   templateUrl: './gestion-inventario.component.html',
   styleUrls: ['./gestion-inventario.component.css']
 })

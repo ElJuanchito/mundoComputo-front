@@ -36,7 +36,7 @@ export class LoginComponent {
     });
   }
 
-  sendCode() {
+  async sendCode() {
     const email = this.loginForm.get('email')?.value;
     if (!email) {
       this.errorMsg = 'Ingresa un correo válido para recibir el código.';
@@ -54,7 +54,7 @@ export class LoginComponent {
         Swal.fire({
           icon: 'error',
           title: 'Error',
-          text: error.error.reply
+          text: error.error.message
         });
         this.loading = false;
       }
@@ -107,7 +107,13 @@ export class LoginComponent {
           text: 'Inicio de sesión exitoso.'
         });
 
-        this.router.navigate(['/admin/gestion-usuarios']);
+        const rol = this.tokenService.getRol();
+
+        if(rol === 'ADMIN'){
+          this.router.navigate(['/admin/gestion-usuarios']);
+        } else if (rol === 'INVENTARIO') {
+          this.router.navigate(['inventario/gestion-inventario']);
+        }
       },
       error: (error) => {
         Swal.fire({

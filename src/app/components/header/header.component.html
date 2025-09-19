@@ -1,0 +1,87 @@
+<!-- HTML del header mejorado -->
+<div class="header-container">
+  <header class="main-header">
+    <!-- Logo y título -->
+    <div class="brand">
+      <a class="brand-link" (click)="goHome($event)">
+        <i class="fa-solid fa-seedling brand-icon"></i>
+        <span class="brand-text">{{ title }}</span>
+      </a>
+    </div>
+
+    <!-- Botón de menú para pantallas pequeñas -->
+    <button class="menu-toggle" (click)="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Navegación -->
+    <nav class="main-nav" [ngClass]="{ 'open': isMenuOpen }">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a class="nav-link"
+            [ngClass]="{ 'active': activeNav === 'inventario' }"
+            (click)="mostrarInventario()">Inventario</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+            [ngClass]="{ 'active': activeNav === 'categorias' }"
+            (click)="mostrarCategorias()">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+            [ngClass]="{ 'active': activeNav === 'usuarios' }"
+            (click)="mostrarUsuarios()">Usuarios</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Usuario / Login-Registro -->
+    <div class="auth-container">
+      @if(isLogged) {
+      <div class="user-dropdown">
+        <button class="user-button" id="userDropdown" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <div class="user-avatar">
+            @if (userImageUrl) {
+              <img [ngSrc]="userImageUrl" width="30" height="30" alt="Avatar usuario" style="border-radius:50%;object-fit:cover;" />
+            } @else {
+              <i class="fa-solid fa-user"></i>
+            }
+          </div>
+          <span class="user-name">{{ nombreUsuario }}</span>
+          <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-item">
+            <a routerLink="/info-usuario">
+              <i class="fa-solid fa-user-circle me-2" style="margin-right: 8px;"></i> Ver perfil
+            </a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-item">
+            <a routerLink="/historial">
+              <i class="fa-solid fa-history me-2" style="margin-right: 8px;"></i> Historial
+            </a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li class="dropdown-item">
+            <a (click)="logout()">
+              <i class="fa-solid fa-sign-out-alt me-2" style="margin-right: 8px;"></i> Cerrar sesión
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Ícono del carrito de compras -->
+      <div class="cart-container">
+        <button type="button" class="cart-button" routerLink="/carrito">
+          <i class="fa-solid fa-shopping-cart"></i>
+        </button>
+        <button type="button" class="cart-button" routerLink="/gestor-reservas">
+          <i class="fa-solid fa-calendar-check"></i>
+        </button>
+      </div>
+      }
+    </div>
+  </header>
+</div>

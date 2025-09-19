@@ -19,6 +19,11 @@
 						<i class="fa-solid fa-plus me-2"></i>Enviar código
 					</button>
 				</div>
+				<div class="col-12 text-center">
+					<button type="button" class="btn btn-custom custom-button" (click)="changePassword()" [disabled]="loading || !loginForm.get('email')?.valid">
+						<i class="fa-solid fa-plus me-2"></i>Cambiar contraseña
+					</button>
+				</div>
 				}
 				@else {
 				<div>

@@ -36,6 +36,10 @@ export class LoginComponent {
     });
   }
 
+  changePassword() {
+    this.router.navigate(['/auth/cambiar-contrasena'], { queryParams: { email: this.loginForm.get('email')?.value } });
+  }
+
   async sendCode() {
     const email = this.loginForm.get('email')?.value;
     if (!email) {

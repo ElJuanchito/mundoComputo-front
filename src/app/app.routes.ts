@@ -7,10 +7,12 @@ import { GestionCategoriasComponent } from "./components/gestion-categorias/gest
 import { CrearCategoriaComponent } from "./components/crear-categoria/crear-categoria.component"
 import { CrearProductoComponent } from "./components/crear-producto/crear-producto.component"
 import { RegistroMovimiento } from "./components/registro-movimiento/registro-movimiento"
+import { CambiarContrasenaComponent } from "./components/cambiar-contrasena/cambiar-contrasena.component"
 
 export const routes: Routes = [
   { path: "", redirectTo: "/auth/login", pathMatch: "full" },
   { path: "auth/login", component: LoginComponent },
+  { path: "auth/cambiar-contrasena", component: CambiarContrasenaComponent },
   { path: "admin/gestion-usuarios", component: GestionUsuariosComponent },
   { path: "admin/crear-usuario", component: CrearUsuarioComponent },
   { path: "admin/actualizar-usuario/:id", component: CrearUsuarioComponent },

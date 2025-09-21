@@ -51,13 +51,13 @@ export class TokenService {
     return values;
   }
 
-  public getIDCuenta(): string {
+  public getIDCuenta(): number {
     const token = this.getToken();
     if (token) {
       const values = this.decodePayload(token);
       return values.id;
     }
-    return "";
+    return 0;
   }
 
   public getRol(): string {

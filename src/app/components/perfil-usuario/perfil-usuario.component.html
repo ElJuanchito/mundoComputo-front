@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="card custom-card">
+    <div class="card-header p-0 position-relative">
+      <img src="https://storage.needpix.com/rsynced_images/banner-web-business-users-blue.jpg" alt="Banner"
+        class="img-fluid card-banner" />
+      <div class="avatar-container" style="position:absolute; left:50%; top:60%; transform:translate(-50%, -50%);">
+        <img [ngSrc]="userImageUrl || 'https://ui-avatars.com/api/?name=Usuario'" width="90" height="90" alt="Avatar usuario"
+          class="avatar-img" style="border-radius:50%; object-fit:cover; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,0.15);" />
+        <label for="userImageInput" class="avatar-edit-icon" style="position:absolute; bottom:0; right:0; background:#fff; border-radius:50%; padding:6px; box-shadow:0 1px 4px rgba(0,0,0,0.15); cursor:pointer;">
+          <i class="fa-solid fa-pen" style="color:#007bff;"></i>
+        </label>
+        <input type="file" id="userImageInput" accept="image/*" (change)="onImageSelected($event)" style="display:none;" />
+      </div>
+    </div>
+    <div class="card-body p-4">
+      <h5 class="mb-0 text-center">
+        {{ isEditing ? 'Edición de Información de Perfil' :
+        'Información de Perfil' }}
+      </h5>
+      <form class="userinfo-form" [formGroup]="userInforForm">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <label for="email">Email: </label>
+            <input type="email" id="email" class="form-control" formControlName="email" />
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" class="form-control" formControlName="nombre" />
+            @if (shouldShowError('nombre')) {
+            <div class="error-message">{{ getNameErrorMessage() }}</div>
+            }
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <label for="apellido">Apellido: </label>
+            <input type="text" id="apellido" class="form-control" formControlName="apellido" />
+            @if (shouldShowError('apellido')) {
+            <div class="error-message">{{ getApellidoErrorMessage() }}</div>
+            }
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <label for="rol">Rol: </label>
+            <input type="text" id="rol" class="form-control" formControlName="rol" />
+          </div>
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <label for="estado">Estado: </label>
+            <input type="text" id="estado" class="form-control" formControlName="estado" />
+          </div>
+        </div>
+
+        @if (isEditing) {
+        <div class="col-12 d-flex justify-content-center">
+          <div class="form-group" style="max-width: 400px; width: 100%;">
+            <label for="password">Contraseña: </label>
+            <div class="password-input-container">
+              <input [type]="isPasswordVisible ? 'text' : 'password'" id="password" class="form-control"
+                formControlName="password" placeholder="Deje vacío si no desea cambiar la contraseña" />
+              <button type="button" class="btn-visibility" (click)="togglePasswordVisibility()"
+                aria-label="Mostrar u ocultar contraseña">
+                <i [class]="isPasswordVisible ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+              </button>
+            </div>
+            @if (shouldShowError('password')) {
+            <div class="error-message">{{ getPasswordErrorMessage() }}</div>
+            }
+          </div>
+        </div>
+        }
+        <div class="col-12 d-flex justify-content-center">
+          @if (isEditing) {
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-save" (click)="saveChanges()">
+              Guardar Cambios
+            </button>
+            <button type="button" class="btn btn-back ms-2" (click)="disableEditing()">
+              Volver
+            </button>
+          </div>
+          } @else {
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-update" (click)="enableEditing()">
+              Actualizar Cuenta
+            </button>
+            <button type="button" class="btn btn-delete ms-2" (click)="deleteAccount()">
+              Eliminar Cuenta
+            </button>
+          </div>
+          }
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

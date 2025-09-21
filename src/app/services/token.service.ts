@@ -39,7 +39,7 @@ export class TokenService {
 
   public logout() {
     window.sessionStorage.clear();
-    this.router.navigate(["/login"]).then(() => {
+    this.router.navigate(["/auth/login"]).then(() => {
       window.location.reload();
     });
   }
@@ -51,13 +51,13 @@ export class TokenService {
     return values;
   }
 
-  public getIDCuenta(): string {
+  public getIDCuenta(): number {
     const token = this.getToken();
     if (token) {
       const values = this.decodePayload(token);
       return values.id;
     }
-    return "";
+    return 0;
   }
 
   public getRol(): string {
@@ -84,5 +84,13 @@ export class TokenService {
       return values.nombre;
     }
     return "";
+  }
+  public getUserImageUrl(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const values = this.decodePayload(token);
+      return values.imagenUrl || null;
+    }
+    return null;
   }
 }

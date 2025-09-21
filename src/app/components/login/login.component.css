@@ -12,12 +12,11 @@
 }
 
 .split-left {
-  background: #f9f9f9;
+  background: #292727;
 }
 
 .split-right {
   background: #a81a1a;
-  border-left: 1px solid #eee;
 }
 
 .login-content {
@@ -25,6 +24,7 @@
   max-width: 400px;
   background: #ffffff;
   border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.10);
   box-shadow: 0 10px 25px rgba(0,0,0,0.10);
   padding: 40px 30px;
   margin: 40px 0;

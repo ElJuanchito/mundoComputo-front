@@ -1,0 +1,202 @@
+/* Split Screen Login Styles */
+.split-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.split-left, .split-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.split-left {
+  background: #292727;
+}
+
+.split-right {
+  background: #a81a1a;
+}
+
+.login-content {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 2px solid rgba(0,0,0,0.10);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.10);
+  padding: 40px 30px;
+  margin: 40px 0;
+}
+
+.banner-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: #a81a1a;
+}
+
+.banner-box img {
+  max-width: 80%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .split-container {
+    flex-direction: column;
+  }
+  .split-left, .split-right {
+    border: none;
+    min-height: 50vh;
+  }
+  .login-content {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .split-container {
+    flex-direction: column;
+  }
+  .split-left, .split-right {
+    min-height: 40vh;
+    padding: 0;
+  }
+  .login-content {
+    padding: 20px 10px;
+  }
+  .banner-box img {
+    max-width: 100%;
+  }
+}
+.countdown-timer {
+  font-size: 1.1rem;
+  color: #0d6efd;
+  background: #e9f2ff;
+  border-radius: 6px;
+  padding: 0.3em 1em;
+  display: inline-block;
+  margin-bottom: 0.5em;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.login-logo img {
+  max-width: 70%;
+  height: auto;
+}
+
+.modal-title {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  font-size: 16px;
+  color: #333;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-shadow: 0 0 0 2px rgba(70, 68, 67, 0.2);
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: #e9ecef;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+}
+
+.form-input::placeholder {
+  color: #6c757d;
+}
+
+.text-center {
+  text-align: center;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.btn-cancel {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+.btn-submit {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 30px 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

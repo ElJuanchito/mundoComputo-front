@@ -1,0 +1,73 @@
+<div class="split-container">
+    <div class="split-left">
+        <div class="login-content">
+            <h5 class="modal-title">
+                <i class="fa-solid fa-right-to-bracket me-3"></i>Cambiar contraseña
+            </h5>
+            <form class="user-form row g-3" [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+                @if (!codeSent) {
+                <div class="col-12">
+                    <div class="form-group">
+                        <input placeholder="Correo electrónico" class="form-input" id="email" type="email"
+                            formControlName="email" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input placeholder="Contraseña" class="form-input" id="newPassword" type="password"
+                        formControlName="newPassword" />
+                </div>
+                <div class="form-group">
+                    <input placeholder="confirmar Contraseña" class="form-input" id="confirmPassword" type="password"
+                        formControlName="confirmPassword" />
+                    @if(passwordForm.hasError('passwordsMismatch') && (passwordForm.get('confirmPassword')?.dirty ||
+                    passwordForm.get('confirmPassword')?.touched)){
+                    <div class="text-danger mt-1" style="font-size: 0.95em;">
+                        Las contraseñas no coinciden.
+                    </div>
+                    }
+                </div>
+                <div class="col-12 text-center">
+                    <button type="button" class="btn btn-custom custom-button" (click)="sendCode()" [disabled]="
+  !passwordForm.get('email')?.valid ||
+  !passwordForm.get('newPassword')?.valid ||
+  !passwordForm.get('confirmPassword')?.valid ||
+  passwordForm.hasError('passwordsMismatch')
+">
+                        <i class="fa-solid fa-plus me-2"></i>Enviar código
+                    </button>
+                </div>
+                }
+                @else {
+                <div>
+                    <p class="text-center">Hemos enviado un código a tu correo electrónico.</p>
+                    <p class="text-center">Por favor, ingresa el código a continuación:</p>
+                    <div class="form-group">
+                        <input placeholder="Código" class="form-input" id="code" type="text" formControlName="code" />
+                    </div>
+                    <div class="text-center mt-2">
+                        <span class="countdown-timer">Código válido por: <b>{{ countdownDisplay }}</b></span>
+                    </div>
+                    <div class="text-center mt-2">
+                        <a href="#" (click)="sendCode()" [class.disabled]="countdown > 0">Reenviar código</a>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-submit"
+                            [disabled]="loading || passwordForm.invalid || countdown <= 0">
+                            <i class="fa-solid fa-plus me-2"></i>Cambiar contrasena
+                        </button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-custom custom-button" (click)="codeSent = false"
+                            [disabled]="loading">Volver</button>
+                    </div>
+                </div>
+                }
+            </form>
+        </div>
+    </div>
+    <div class="split-right">
+        <div class="banner-box">
+            <img [ngSrc]="imagen" width="600" height="200" alt="Logo de mundo-computo" />
+        </div>
+    </div>
+</div>

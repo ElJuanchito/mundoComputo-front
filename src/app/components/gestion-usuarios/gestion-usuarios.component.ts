@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-gestion-usuarios',
-  imports: [RouterLink],
   templateUrl: './gestion-usuarios.component.html',
   styleUrls: ['./gestion-usuarios.component.css']
 })
@@ -23,6 +22,7 @@ export class GestionUsuariosComponent {
             this.usuarios = data.message as UsuarioInfoDTO[];
           },
           error: error => {
+            console.log(error.error.message)
             Swal.fire({
               icon: 'error',
               title: 'Error',
